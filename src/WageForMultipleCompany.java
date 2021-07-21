@@ -1,20 +1,22 @@
-public class WageForMultipleCompany extends WageForMonth {
-    public static final int MAX_HOURS_IN_MONTH=100;
+public class WageForMultipleCompany {
+    public static final int IS_FULL_TIME = 1;
+    public static final int IS_PART_TIME = 2;
 
     String company_name = "";
     int empRatePerHour;
     int numOfWorkingDays;
     int maxHoursInMonth;
+    int totalEmpWage;
 
-//    public void WageForMultipleCompany(String company_name, int empRatePerHour, int numOfWorkingDays, int maxHoursInMonth){
-//        this.company_name=company_name;
-//        this.empRatePerHour=empRatePerHour;
-//        this.numOfWorkingDays=numOfWorkingDays;
-//        this.maxHoursInMonth=maxHoursInMonth;
-//
-//      }
+    public WageForMultipleCompany(String company_name,int empRatePerHour, int numOfWorkingDays, int maxHoursInMonth){
+        this.company_name=company_name;
+        this.empRatePerHour=empRatePerHour;
+        this.numOfWorkingDays=numOfWorkingDays;
+        this.maxHoursInMonth=maxHoursInMonth;
+    }
 
-    int displayForMonthSalary(String company_name, int empRatePerHour, int numOfWorkingDays, int maxHoursInMonth) {
+    public void displayForMonthSalary() {
+        int empHrs=0;
         int totalEmpHrs=0;
         int totalWorkingDays=0;
 
@@ -41,18 +43,29 @@ public class WageForMultipleCompany extends WageForMonth {
 
             totalEmpHrs+=empHrs;
             System.out.println("Day #" +totalWorkingDays+ "  Employe Hours # "+ empHrs+ "  Total Employee Working Hours  is # "+totalEmpHrs);
-        }
-             totalEmpWage=    totalEmpHrs*empRatePerHour;
-             System.out.println(" company is------------ "+company_name +"---- total Employee wage for company is-----------------:" +totalEmpWage);
-              return totalEmpWage ;
+            }
+               totalEmpWage = totalEmpHrs * empRatePerHour;
 
+
+
+            }
+    @Override
+    public String toString(){
+
+        return "Total Employee Wage for Company ---------"+company_name+ "---------is--------- :"+ totalEmpWage;
     }
 
     public static void main(String[] args) {
-     WageForMultipleCompany multipleCompany=new WageForMultipleCompany();
-     multipleCompany.displayForMonthSalary("BridgeLabz",8,20,100);
-        multipleCompany.displayForMonthSalary("HCL",4,24,50);
-        multipleCompany.displayForMonthSalary("TATA ",12,10,50);
+     WageForMultipleCompany BridgeLabz=new WageForMultipleCompany("BridgeLabz",20,20,100);
+     WageForMultipleCompany HCL=new WageForMultipleCompany("Hcl",100,20,100);
+     WageForMultipleCompany Reliance=new WageForMultipleCompany("Reliance",100,100,50);
+        BridgeLabz.displayForMonthSalary();
+        System.out.println(BridgeLabz);
+        HCL.displayForMonthSalary();
+        System.out.println(HCL);
+        Reliance.displayForMonthSalary();
+        System.out.println(Reliance);
+
     }
 
 
